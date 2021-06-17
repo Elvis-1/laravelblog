@@ -82,3 +82,26 @@ class PostsController extends Controller
         //
     }
 }
+
+/*--- End Pionts--*/
+// Create
+// /blog/create
+
+// Read
+// /blog
+
+// update -PUT or PATCH
+// /blog/{slug}
+
+// Delete - DELETE
+// blog/{id}
+
+// Show - GET
+// /
+
+// Edit  - GET
+// -- /blog/{id}/edit
+
+
+
+
