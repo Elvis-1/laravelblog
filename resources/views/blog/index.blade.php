@@ -10,6 +10,16 @@
         @if(Auth::check())
          <p style="text-align:left; "><a class="btn btn-primary br-rounded" style="border-radius:20px;" href="/blog/create">Create Post</a></p>
          @endif
+         @if($errors->any())
+           <div class="">
+               <ul>
+                @foreach ($errors->all() as $error)
+                    <li class="alert alert-danger">{{$error}}</li>
+                    
+                @endforeach
+               </ul>
+           </div>
+           @endif
          <br><br>
   @foreach($posts as $post)
    <div class="container">
@@ -21,7 +31,7 @@
      <div class="col-md-8">
         <div class="" style="text-align:center; margin:50px">
         <h1 class="" style="text-align:left; font-weight:bold">{{$post->title}}</h1>
-        <p style="text-align:left"><small>By <b>{{$post->user->name}} - <i>IFNOTGOD</i></b></small>,Create on {{date('jS M Y',strtotime($post->updatedd_at))}}.</p>
+        <p style="text-align:left"><small>By <b>{{$post->user->name}} - <i>IFNOTGOD</i></b></small>,Create on {{date('jS M Y',strtotime($post->updated_at))}}.</p>
         <p style="text-align:left;">{{$post->description}}</p>
 
         <div class="">
