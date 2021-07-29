@@ -6,6 +6,11 @@
             <h1>Blog Posts</h1>
            </div>
         </div>
+        @if(session()->has('message'))
+           <div class="result">
+           <span class="alert alert-success">{{session()->get('message')}}</span>
+           </div>
+         @endif  
         <hr>
         @if(Auth::check())
          <p style="text-align:left; "><a class="btn btn-primary br-rounded" style="border-radius:20px;" href="/blog/create">Create Post</a></p>
@@ -41,6 +46,18 @@
         </div>
      </div>
     </div>
+    @if(isset(Auth::user()->id) && Auth::user()->id == $post->user_id)
+    <span class="text-right"><a href="/blog/{{$post->slug}}/edit">Edit</a></span>
+    <span class="text-right">
+    <form action="/blog/{{$post->slug}}"
+    method="POST">
+    @csrf
+    @method('delete')
+    <button class="btn btn-danger">delete</button>
+    </form>
+    </span>
+    @endif
+    <br><br>
     @endforeach
  </div>
    
